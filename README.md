@@ -28,12 +28,14 @@ Included algorithms **via a single API**:
 - numpy == 1.22.0
 - opencv_python == 4.5.5.62
 - psutil == 5.8.0
-- torch == 1.10.2
+- torch == 1.13
 - wandb == 0.12.9
+- protobuf == 3.20
+- gym[atari]
 
 ## Usage
 ```bash
-python main.py --agent_name="FQF" --online_wandb --interval=100 --mem_size=850000 --env_name="BreakoutNoFrameskip-v4"
+python main.py --agent_name="C51" --online_wandb --interval=100 --env_name="BreakoutNoFrameskip-v4"
 ```
 ```bash
 usage: Choose your desired parameters [-h] [--agent_name AGENT_NAME]
@@ -56,6 +58,12 @@ optional arguments:
                         with it.
   --online_wandb        Run wandb in online mode.
 ```
+
+### Additional Details
+- Training takes significant time. Preferred to be run on machines with access to GPUs.
+- Access to [wandb](https://wandb.ai) allows your run info (as well as graphs) to be saved online.
+- Use `nohup` (or something similar) to execute it in the background.
+
 ###  Considerations
 - Accepted values for `agent_name`: {`"C51"`,` "IQN"`, `"FQF"` and `"QRDQN"`}.
 - At the time of testing, the code by default uses the weights of the latest run available in _`weights`_ folder so, please bear in mind to put your desired weights in the appropriate folder inside the _`weights`_ directory! 👇
